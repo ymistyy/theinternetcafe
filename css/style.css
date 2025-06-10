@@ -1,0 +1,81 @@
+header {
+    text-align: center;
+    white-space: pre-line;
+}
+
+.top-border {
+    border-top: 1px solid #ccc;
+    padding: 10px;
+  }
+
+.editor {
+    height: 300px;
+}
+
+.reply .reply {
+    padding-left: 40px;
+}
+
+body {
+    background-color: #e8e8e8;
+    margin: 0px auto;
+    padding: 8px;
+    max-width: 600px;
+    color: black;
+}
+
+textarea, input[type=text], input[type=password] {
+    font-size: inherit;
+    font-family: inherit;
+    background-color: white;
+    color: inherit;
+    padding: .5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+blockquote {
+    font-style: italic;
+}
+
+pre {
+    color: #9114B5;
+}
+
+h1, h2, h3 {
+    color: #333e68;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #262133;
+        color: white;
+    }
+
+    h1, h2, h3 {
+        color: #fe2d82;
+    }
+
+    textarea, input[type=text], input[type=password] {
+        background-color: #403853;
+    }
+
+    a:visited {
+        color: #a097b3;
+    }
+
+    a:link {
+        color: #3395ff;
+    }
+
+    pre {
+        color: gold;
+    }
+}
+
+
+footer {
+    border-top: 1px solid #ccc;
+    padding-top: 10px; 
+    text-align: center;
+}
