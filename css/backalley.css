@@ -1,84 +1,153 @@
-header {
-    text-align: center;
-    white-space: pre-line;
-}
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-.top-border {
-    border-top: 1px solid #ccc;
-    padding-top: 10px; 
-}
-
-.editor {
-    height: 300px;
-}
-
-.reply .reply {
-    padding-left: 40px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-image: url('../images/stars4.gif'); 
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-position: center center; 
-    background-color: #e8e8e8; 
-    margin: 0px auto;
-    padding: 8px;
-    max-width: 600px;
-    color:  #403853;
+  font-family: 'Press Start 2P', monospace;
+  background: url('https://i.redd.it/2e2hgfy0vo251.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #d9d9d9;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+  text-shadow:
+    0 0 5px #ff0080,
+    0 0 10px #ff0080,
+    0 0 20px #ff0080,
+    0 0 30px #ff0080;
 }
 
-textarea, input[type=text], input[type=password] {
-    font-size: inherit;
-    font-family: inherit;
-    background-color: white;
-    color: inherit;
-    padding: .5rem;
-    width: 100%;
-    box-sizing: border-box;
+.weirdcore-shadow {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0.3;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  mix-blend-mode: screen;
+  animation: floatShadow 20s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 5px #ff00ff);
 }
 
-blockquote {
-    font-style: italic;
+.shadow1 {
+  top: 10%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background-image: url('https://i.pinimg.com/736x/bf/15/5c/bf155c5efd4a8b1fdd65cf6802070fad.jpg');
+  animation-delay: 0s;
+  transform: rotate(-10deg);
 }
 
-pre {
-    color: #9114B5;
+.shadow2 {
+  bottom: 15%;
+  right: -20%;
+  width: 350px;
+  height: 350px;
+  background-image: url('https://i.pinimg.com/736x/bf/15/5c/bf155c5efd4a8b1fdd65cf6802070fad.jpg');
+  animation-delay: 10s;
+  transform: rotate(15deg) scaleX(-1);
 }
 
-h1, h2, h3 {
-    color: #333e68;
+/* Shadow float animation */
+@keyframes floatShadow {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(20px) rotate(5deg);
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #262133;
-        color: white;
-    }
+/* Header styling */
+header {
+  text-align: center;
+  white-space: pre-line;
+  color: #ff66cc;
+  text-shadow:
+    0 0 10px #ff66cc,
+    0 0 20px #ff33aa;
+  margin-bottom: 20px;
+}
 
-    h1, h2, h3 {
-        color: #fe2d82;
-    }
+/* Links */
+.creepy-link {
+  display: inline-block;
+  color: #ff3399;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 8px 0;
+  text-shadow: 0 0 6px #ff33aa;
+  transition: color 0.3s ease;
+  letter-spacing: 1.5px;
+}
 
-    textarea, input[type=text], input[type=password] {
-        background-color: #403853;
-    }
-
-    a:visited {
-        color: #a097b3;
-    }
-
-    a:link {
-        color: #3395ff;
-    }
-
-    pre {
-        color: gold;
-    }
+.creepy-link:hover {
+  color: #ff66cc;
+  text-shadow:
+    0 0 15px #ff66cc,
+    0 0 20px #ff99dd;
 }
 
 
+.creepy-text {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: #ff99dd;
+  text-shadow: 0 0 3px #ff66cc;
+  margin-bottom: 10px;
+}
+
+/* Image style */
+.creepy-img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  border: 2px solid #ff66cc;
+  filter: drop-shadow(0 0 8px #ff66cc);
+  border-radius: 8px;
+  box-shadow: 0 0 15px #ff33aa;
+}
+
+/* Top border */
+.top-border {
+  border-top: 2px solid #ff33aa;
+  padding-top: 15px;
+  margin-bottom: 20px;
+}
+
+/* Footer */
 footer {
-    border-top: 1px solid #ccc;
-    padding-top: 10px; 
+  border-top: 2px solid #ff33aa;
+  padding: 15px 0 0 0;
+  text-align: center;
+  color: #ff99dd;
+  text-shadow:
+    0 0 6px #ff66cc,
+    0 0 12px #ff33aa;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+nav ul, footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 650px) {
+  body {
+    padding: 10px;
+  }
+  .creepy-text {
+    font-size: 0.8rem;
+  }
 }

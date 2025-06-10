@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Shadow Money Wizard Gang</title>
+<link rel="icon" href="https://avatars.githubusercontent.com/u/173033803?s=400&u=a2d39b438439c157181dc1c42c8bcaf2891a47c9&v=4" type="image/png" />
+<style>
+  body {
+    margin: 0; padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('https://th.bing.com/th/id/OIP.Z4P2ej0SrXlRTmTKySSQXgHaD6?rs=1&pid=ImgDetMain') no-repeat center center fixed;
+    background-size: cover;
+    color: #eee;
+    text-shadow: 0 0 5px #000;
+  }
+  main {
+    max-width: 600px; margin: 0 auto;
+    background: rgba(20,10,30,0.8);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #9f00ff;
+  }
+  h1 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #d16aff;
+    text-align: center;
+  }
+  img.wizard {
+    display: block; margin: 1rem auto;
+    width: 120px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ff00ffaa;
+  }
+  p.description {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-style: italic;
+  }
+  .choices {
+    display: flex; flex-direction: column;
+    gap: 10px;
+  }
+  button.choice-btn {
+    background: #9f00ff;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  button.choice-btn:hover {
+    background: #c945ff;
+  }
+  a.goback {
+    display: block;
+    margin-top: 2rem;
+    text-align: center;
+    color: #ff77ff;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>The Shadow Money Wizard Gang</h1>
+  <img class="wizard" src="https://avatars.githubusercontent.com/u/173033803?s=400&u=a2d39b438439c157181dc1c42c8bcaf2891a47c9&v=4" alt="Friendly wizard" />
+  <p class="description" id="storyText">
+    You encounter a friendly wizard who invites you to embark on a strange journey. Will you join him?
+  </p>
+  <div class="choices" id="choicesContainer">
+    <button class="choice-btn" id="joinBtn">Join the Gang</button>
+    <button class="choice-btn" id="declineBtn">Politely Decline</button>
+  </div>
+  <div id="goBackLinkContainer"></div>
+</main>
+
+<script>
+  const storyText = document.getElementById('storyText');
+  const choicesContainer = document.getElementById('choicesContainer');
+  const goBackLinkContainer = document.getElementById('goBackLinkContainer');
+
+  // eerste keuze: Join or Decline
+  document.getElementById('declineBtn').onclick = () => {
+    storyText.textContent = "The wizard nods slowly, vanishing into the shadows. You are left wondering what might have been.";
+    choicesContainer.innerHTML = '';
+    addGoBack();
+  };
+
+  document.getElementById('joinBtn').onclick = () => {
+    storyText.textContent = "The wizard smiles mysteriously and hands you a glowing coin. \"This coin binds you to us,\" he whispers. \"Meet me where the shadows flicker and reality thins.\"";
+    choicesContainer.innerHTML = `
+      <button class="choice-btn" id="askCoinBtn">Ask about the coin</button>
+      <button class="choice-btn" id="followWizardBtn">Follow the wizard immediately</button>
+      <button class="choice-btn" id="hesitateBtn">Hesitate and look around</button>
+    `;
+    addListenersStep1();
+  };
+
+  function addListenersStep1() {
+    document.getElementById('askCoinBtn').onclick = () => {
+      storyText.textContent = "The coin pulses faintly. \"It’s a key to the in-between,\" the wizard says, voice echoing oddly. \"A place beyond the walls you know. The gang waits there.\"";
+      choicesContainer.innerHTML = `
+        <button class="choice-btn" id="goToMeetingBtn">Go to the meeting place</button>
+        <button class="choice-btn" id="stayBtn">Decide to stay a little longer</button>
+      `;
+      addListenersStep2();
+    };
+    document.getElementById('followWizardBtn').onclick = () => {
+      storyText.textContent = "You step through a flickering veil of shadows and find yourself in a twisted corridor. The walls hum softly, alive. Welcome to the edge of the known.";
+      choicesContainer.innerHTML = `
+        <button class="choice-btn" id="exploreBtn">Explore the strange corridor</button>
+        <button class="choice-btn" id="callOutBtn">Call out to the gang</button>
+      `;
+      addListenersStep3();
+    };
+    document.getElementById('hesitateBtn').onclick = () => {
+      storyText.textContent = "You feel the weight of the coin, cold and strange. The alley behind you feels distant. The wizard's eyes seem to pierce into your mind.";
+      choicesContainer.innerHTML = `
+        <button class="choice-btn" id="joinNowBtn">Join the gang now</button>
+        <button class="choice-btn" id="runAwayBtn">Run away from this place</button>
+      `;
+      addListenersStep4();
+    };
+  }
+
+  function addListenersStep2() {
+    document.getElementById('goToMeetingBtn').onclick = () => {
+      storyText.textContent = "You walk towards where shadows flicker, your heartbeat syncs with the fading light. A doorway appears, glowing faintly.";
+      choicesContainer.innerHTML = '';
+      addGoBack();
+    };
+    document.getElementById('stayBtn').onclick = () => {
+      storyText.textContent = "The alley feels colder, the air thicker. The coin warms in your pocket, pulsing like a heartbeat.";
+      choicesContainer.innerHTML = '';
+      addGoBack();
+    };
+  }
+
+  function addListenersStep3() {
+    document.getElementById('exploreBtn').onclick = () => {
+      storyText.textContent = "As you wander, the walls seem to breathe. A low whisper calls your name. The line between real and unreal blurs.";
+      choicesContainer.innerHTML = '';
+      addGoBack();
+    };
+    document.getElementById('callOutBtn').onclick = () => {
+      storyText.textContent = "Your voice echoes endlessly. Suddenly, a shadowy figure emerges, smiling strangely. \"We’ve been waiting.\"";
+      choicesContainer.innerHTML = '';
+      addGoBack();
+    };
+  }
+
+  function addListenersStep4() {
+    document.getElementById('joinNowBtn').onclick = () => {
+      storyText.textContent = "With a sudden resolve, you clutch the coin. The world around bends and warps. You’re no longer alone.";
+      choicesContainer.innerHTML = '';
+      addGoBack();
+    };
+    document.getElementById('runAwayBtn').onclick = () => {
+      storyText.textContent = "You turn away quickly, but the alley seems endless. The coin burns in your pocket, a reminder you can’t escape.";
+      choicesContainer.innerHTML = '';
+      addGoBack();
+    };
+  }
+
+  function addGoBack() {
+    goBackLinkContainer.innerHTML = '<a href="../index.html" class="goback">Go back</a>';
+  }
+</script>
+</body>
+</html>
